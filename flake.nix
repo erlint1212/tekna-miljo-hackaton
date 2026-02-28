@@ -2,7 +2,7 @@
   description = "Kotlin Android App Development Environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -17,19 +17,18 @@
           };
         };
 
-        # Configure the Android SDK packages we need
+       # Configure the Android SDK packages we need
         androidEnv = pkgs.androidenv.composeAndroidPackages {
           cmdLineToolsVersion = "8.0";
           toolsVersion = "26.1.1";
-          platformToolsVersion = "34.0.4";
+          platformToolsVersion = "36.0.2";
           buildToolsVersions = [ "34.0.0" ];
           platformVersions = [ "34" ];
           abiVersions = [ "x86_64" ];
           includeEmulator = true;
           includeSystemImages = false;
           includeNDK = false;
-        };
-        
+        }; 
         androidSdk = androidEnv.androidsdk;
       in
       {
